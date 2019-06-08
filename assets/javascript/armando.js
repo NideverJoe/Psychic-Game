@@ -10,7 +10,7 @@ var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 
 //array to store all userchoice
 var userchoicelist = [];
-var userGuesses =  document.getElementById("userguesses").innerHTML;
+var userGuesses =  document.getElementById("userguesses");
 
 //functions
 //
@@ -22,8 +22,8 @@ var gamereset = function () {
     document.getElementById("guessremaining").innerHTML = "Guesses Remaining: " + guessremain;
     console.log("Game begin or reset.");
     comppicknew();
-    userGuesses.empty();
-    userGuesses =  "You have guessed: " + userchoicelist;
+    while(userGuesses.firstChild) userGuesses.removeChild(userGuesses.firstChild)
+    document.getElementById("userguesses").innerHTML =  "You have guessed: " + userchoicelist;
 }
 
 // computer pick a letter
@@ -35,13 +35,13 @@ var comppicknew = function () {
 // compare user choice to computer choice
 var letterchecker = function () {
     if (userchoice == computerchoice) {
-        alert("How did you know I picked " + computerchoice + "?   You Win!");
         wins++;
         comppicknew();
         userchoicelist = [];
         gamereset();
         // document.getElementById("userguesses").innerHTML = "You have guessed: " + userchoicelist.split(",");
         document.getElementById("userguesses").innerHTML = "You have guessed: " + userchoicelist;
+        alert("You Win!")
     }
     else {
         guessremain--;
@@ -49,7 +49,6 @@ var letterchecker = function () {
     }
     if
         (guessremain == 0) {
-        alert("You Lose! Computer choice was " + computerchoice);
         loss++;
         document.getElementById("losses").innerHTML = "Losses: " + loss;
         userchoicelist = [];

@@ -16,14 +16,21 @@ var userGuesses =  document.getElementById("userguesses").innerHTML;
 //
 //reset aka game begin
 var gamereset = function () {
+    console.log("IN RESET")
+    document.getElementById("userguesses").innerHTML = "You have guessed: " + userchoicelist.join(" ");
+
     guessremain = 9;
     document.getElementById("wins").innerHTML = "Wins: " + wins;
     document.getElementById("losses").innerHTML = "Losses: " + loss;
     document.getElementById("guessremaining").innerHTML = "Guesses Remaining: " + guessremain;
     console.log("Game begin or reset.");
     comppicknew();
-    userGuesses.empty();
+    //userGuesses.empty();
+    console.log("USER GUESS BELOW")
+    console.log(userGuesses)
     userGuesses =  "You have guessed: " + userchoicelist;
+    document.getElementById("userguesses").innerHTML = "You have guessed: " + userchoicelist.join(" ");
+
 }
 
 // computer pick a letter
@@ -41,7 +48,7 @@ var letterchecker = function () {
         userchoicelist = [];
         gamereset();
         // document.getElementById("userguesses").innerHTML = "You have guessed: " + userchoicelist.split(",");
-        document.getElementById("userguesses").innerHTML = "You have guessed: " + userchoicelist;
+        document.getElementById("userguesses").innerHTML = "You have guessed: " + userchoicelist.join(" ");
     }
     else {
         guessremain--;
@@ -66,7 +73,7 @@ document.onkeyup = function (event) {
     userchoicelist.push(userchoice);
     console.log(userchoicelist);
     // document.getElementById("userguesses").innerHTML = "You have guessed: " + userchoicelist.split(",");
-    document.getElementById("userguesses").innerHTML = "You have guessed: " + userchoicelist;
+    document.getElementById("userguesses").innerHTML = "You have guessed: " + userchoicelist.join(" ");
 }
 
 //initialize first computer choice and show scores
